@@ -1,0 +1,38 @@
+/* The sales department has given you the sales figures for the first two months of 2023.
+
+You've been tasked with determining the percentage of weekly sales on the first and last day of every week.
+Consider Sunday as last day of week and Monday as first day of week.
+
+In your output, include the wiik number percentage sales for the first dat of the week, and percentage sales for the Both proportions should be rounded to the nearest whole number.
+
+Find out the weeksum and day of the wiik
+Calculate total sales of that week
+Classify day as Monday and Sunday
+Calculate perc of monday sales and sunday sales by dividing it with total sales */
+
+Select *from early_sales;
+with weekly_sales as (
+Select
+DATEPART(week, invoicedate) as week_num,
+DATEPART(weekday, invoicedate) as day_of_week,
+quantity * unitprice as sales
+from early_sales;
+
+total_weekly_sales as(
+Select week_num,
+sum(sales) as total_sales
+from weekly_sales
+group by week_num),
+
+first_last_day_sales as(
+Select week_num,
+sum(case when day_of_week =2 then sales else 0 end) as monday_sales,
+sum(case when day_of_week =1 then sales else 0 end) as sunday_sales
+from weekly_sales
+group by week_num)
+
+Select f1 week_num,
+round((f1.monday_sales/ tw.today_sales) as monday_perc,
+round((f1.sunday_sales/ tw.today_sales)=100,0) as sunday_perc,
+from first_last_day_sales f1
+join total_weekly_sales tw on f1.week_num = tw.week_num
