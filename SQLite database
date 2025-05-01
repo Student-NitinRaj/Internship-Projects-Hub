@@ -1,0 +1,77 @@
+create database Average;
+use Average;
+create table employeee(
+employee_id int,
+name varchar(50),
+department varchar(50),
+salary int
+);
+
+insert into employee
+(employee_id,name,department,salary)
+values
+(1,"Anish","HR",1000),
+(2,"Anish","HR",2000),
+(3,"Anish","HR",1000),
+(4,"Anish","HR",1000);
+
+select avg(salary) as average from employee;
+
+
+
+
+
+
+
+
+-- avg from employee;
+
+
+
+
+
+
+
+-- create database government;
+-- use government;
+
+-- create table block(
+-- id int primary key,
+-- name varchar(50),
+-- city varchar(50) default "patna",
+-- salary int default 250900);
+
+-- insert into block
+-- (id,name,city,salary)
+-- values
+-- (34,"Niti",443354,"mumbai"),
+-- (35,"Nish",234239,"Delhi"),
+-- (36,"Raju",234989,"Gaya"),
+-- (92,"Nit");
+
+-- select * from block
+-- where city in("patna");
+
+
+
+
+
+
+-- create database company;
+-- use company;
+
+-- create table employee(
+--   id int primary key,
+--   name varchar(50) not null,
+--   salary int 
+-- );
+-- insert into employee
+-- (id, name, salary)
+-- values
+-- (12,"Nithin",232322),
+-- (13,"Nishant",123810),
+-- (14,"Nithin",232329),
+-- (15,"Nishu",123810);
+
+-- select * from employee
+-- order by salary asc;
