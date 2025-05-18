@@ -1,1 +1,1 @@
-# Internship-Projects-Hub
+# Lab-Internship-Projects-Hub
